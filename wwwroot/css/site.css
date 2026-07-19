@@ -598,3 +598,148 @@ html, body {
     background-color: #f4f2ff;
     border-color: #b197fc;
 }
+
+/* ======================================================= */
+/* ============  RESPONSIVIDAD MÓVIL / TABLET  ============ */
+/* ======================================================= */
+
+/* Tablets y pantallas medianas (≤ 992px) */
+@media (max-width: 992px) {
+    .mi-navbar {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .titulo-principal {
+        font-size: 2.4rem;
+    }
+
+    .subtitulo-principal {
+        font-size: 2rem;
+    }
+
+    .mision {
+        font-size: 2.4rem;
+    }
+}
+
+/* Móviles (≤ 768px) */
+@media (max-width: 768px) {
+    .mi-navbar {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Contenedor de texto principal: menos padding, ancho fluido */
+    .caja-dorada {
+        padding: 12px 18px;
+        margin: 0 1rem;
+        text-align: center;
+    }
+
+    .titulo-principal {
+        font-size: 1.9rem;
+        letter-spacing: 0.5px;
+    }
+
+    .subtitulo-principal {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .texto-tranquilidad {
+        font-size: 1rem;
+    }
+
+    /* Evita que la sección de misión se corte o genere scroll horizontal */
+    .contenedor0 {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px 20px;
+        box-sizing: border-box;
+    }
+
+    .contenido-blanco {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .mision {
+        font-size: 1.8rem;
+    }
+
+    .misionDescripcion {
+        font-size: 0.9rem;
+    }
+
+    .separador-identidad span {
+        font-size: 1.4rem;
+        padding: 0 12px;
+    }
+
+    /* Tarjetas: apiladas verticalmente y con padding reducido */
+    .fila-tarjetas {
+        gap: 1rem;
+    }
+
+    .tarjeta-valores,
+    .tarjeta-objetivos {
+        min-width: 100%;
+        padding: 1.5rem;
+    }
+
+    /* Reordena visualmente: valores, objetivos, y el botón de contacto al final */
+    .tarjeta-valores {
+        order: 1;
+    }
+
+    .tarjeta-objetivos {
+        order: 2;
+    }
+
+    .contenedor-boton-central {
+        order: 3;
+        width: 100%;
+    }
+
+    .btn-contacto-directo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .servicios-title {
+        font-size: 2rem;
+    }
+
+    .servicios-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Móviles pequeños (≤ 480px) */
+@media (max-width: 480px) {
+    .titulo-principal {
+        font-size: 1.5rem;
+    }
+
+    .subtitulo-principal {
+        font-size: 1.15rem;
+    }
+
+    .texto-tranquilidad {
+        font-size: 0.85rem;
+    }
+
+    .mision {
+        font-size: 1.5rem;
+    }
+
+    .tarjeta-valores,
+    .tarjeta-objetivos {
+        padding: 1.2rem;
+    }
+
+    .servicio-card {
+        padding: 1.5rem;
+    }
+}
