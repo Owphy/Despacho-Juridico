@@ -51,33 +51,9 @@ html, body {
 }
 
 
-/*--- PRIMERA PARTE ---*/
+/*  ==========  PRIMERA PARTE  ========== */
 
-/* Contenedor Padre */
-
-/* 1. Imagen congelada al fondo */
-.fondo-fijo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 0;
-}
-
-/* 2. Filtro oscuro congelado */
-.capa-filtro {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
-    z-index: 0;
-}
-
-/* 3. Contenedor Flexbox (Se mueve con el scroll) */
+/* 3. Contenedor Flexbox */
 .contenedor-alineacion {
     position: absolute;
     top: 0;
@@ -132,9 +108,9 @@ html, body {
     letter-spacing: 1px;
 }
 
-/*--- FIN DE LA PRIMERA PARTE ---*/
+/*  ========== FIN DE LA PRIMERA PARTE  ========== */
 
-/*--- SEGUNDA PARTE ---*/
+/*  ========== SEGUNDA PARTE  ========== */
 .pantalla-principal {
     position: relative;
     width: 100%;
@@ -142,32 +118,29 @@ html, body {
     overflow: hidden;
     /* Al estar en una capa inferior, las demás secciones pasarán por encima */
     z-index: 1;
+    /* Fondo tipo "parallax" nativo del navegador: mucho más ligero que un
+       <img> con position:fixed, y no interfiere con el scroll de la página */
+    background-image: url('/Images/Wallpaper1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.fondo-fijo {
-    position: fixed; /* 💡 CLAVE: La imagen se queda pegada a la pantalla al hacer scroll */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover; /* Se adapta perfectamente sin deformarse */
-    z-index: -2; /* Va detrás de todo lo demás en la sección 1 */
-}
-
+/* Filtro oscuro*/
 .capa-filtro {
-    position: fixed; /* También se queda fija para oscurecer la imagen al bajar */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3); /* Ajusta el 0.5 para más o menos oscuridad */
-    z-index: -1;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 0;
 }
 
 
 /* El contenedor blanco que sube */
 .NuestraMision {
-    position: relative; /* 💡 CLAVE: Para poder ponerle un z-index y que tape el fondo */
+    position: relative;
     z-index: 10; /* Un número mayor para que pase por encima de la sección fija (z-index: 1) */
     padding: 80px 20px; /* Relleno arriba y abajo para darle aire al texto */
     background-color: rgba(255, 255, 240, 0); /* Fondo blanco totalmente sólido para tapar lo de atrás */
@@ -183,7 +156,7 @@ html, body {
 }
 
 .contenedor0 {
-    position: relative; /* 💡 CLAVE: Para poder ponerle un z-index y que tape el fondo */
+    position: relative;
     z-index: 10; /* Un número mayor para que pase por encima de la sección fija (z-index: 1) */
     border-radius: 10px;
     width: fit-content;
@@ -195,9 +168,6 @@ html, body {
     border-top: 2px solid #FFD92E; /* Línea superior blanca de 2px de grosor */
     border-bottom: 2px solid #FFD92E; /* Línea inferior blanca de 2px de grosor */
 }
-
-/* La parte de abajo --- */
-/* Asegura que el contenedor padre tenga un ancho máximo y esté centrado */
 
 
 .imagen-fila {
@@ -262,9 +232,12 @@ html, body {
     align-items: center;
     gap: 1.5rem;
     flex-wrap: wrap; /* Permite que en celulares se pongan una abajo de otra */
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* TARJETA IZQUIERDA (VALORES - AZUL OSCURO) */
+/* TARJETA IZQUIERDA*/
 .tarjeta-valores {
     background-color: #0b1625;
     color: #ffffff;
@@ -380,9 +353,9 @@ html, body {
                 margin-right: 0.5rem;
             }
 
-/* --- Final SECCIÓN 2 ---*/
+/*  ========== Final SECCIÓN 2  ========== */
 
-/* --- SERVICIOS LEGALES ---*/
+/*  ========== SECCION 3: SERVICIOS LEGALES  ========== */
 
 /* Variables de Color (basadas en la imagen) */
 :root {
@@ -446,19 +419,6 @@ html, body {
     padding-bottom: 10px;
     border-bottom: 2px solid #ddd; /* Línea divisoria suave */
 }
-/* Secciones de Categoría (Familia, Laboral) */
-.servicios-category-section {
-    margin-bottom: 60px;
-}
-
-.category-title {
-    font-size: 1.8rem;
-    color: var(--color-text-main);
-    font-weight: 600;
-    margin-bottom: 35px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ddd; /* Línea divisoria suave */
-}
 
 /* Diseño de Cuadrícula (Grid) - Responsivo (Reemplaza .row-cols-...) */
 .servicios-grid {
@@ -484,10 +444,11 @@ html, body {
 
 /* Estilos de la Tarjeta (Card) Individual */
 .servicio-card {
+    position: relative;
     background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border-card);
+    border: 1px solid rgba(212, 175, 55, 0.5);
     border-radius: 8px;
-    padding: 35px;
+    padding: 55px 30px 35px;
     display: flex;
     flex-direction: column; /* Alinear contenido verticalmente */
     align-items: center; /* Centrar contenido horizontalmente */
@@ -499,24 +460,54 @@ html, body {
     /* Efecto Hover de la tarjeta */
     .servicio-card:hover {
         transform: translateY(-5px); /* Levantar ligeramente */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25); /* Sombra más pronunciada */
     }
 
-/* Contenedor de iconos */
-.servicio-icon-container {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 25px;
+/* Círculo de ícono flotante, mismo patrón visual que .contacto-icon-circle */
+.servicio-icon-badge {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(212, 175, 55, 0.6);
 }
 
-    .servicio-icon-container img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain; /* Asegura que la imagen no se deforme */
+    .servicio-icon-badge i {
+        font-size: 1.7rem;
+        color: #ffffff;
     }
+
+/* Colores por servicio */
+.badge-divorcio {
+    background-color: #c0392b;
+}
+
+.badge-custodia {
+    background-color: #2471a3;
+}
+
+.badge-pension {
+    background-color: #229954;
+}
+
+.badge-despido {
+    background-color: #6e3b1f;
+}
+
+.badge-contratos {
+    background-color: #4a5a6a;
+}
+
+.badge-pensiones-imss {
+    background-color: #148f77;
+}
 
 /* Títulos dentro de la tarjeta */
 .servicio-card-title {
@@ -559,49 +550,7 @@ html, body {
         color: #ffffff;
     }
 
-/* --- ESTILOS TEMPORALES PARA LOS ICONOS (DUMMY) ---
-   Borra esta sección cuando añadas las imágenes de iconos reales en el CSHTML */
-.dummy-icon {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #e9ecef;
-    border: 2px dashed #adb5bd;
-}
-
-.dummy-icon-divorcio {
-    background-color: #ffe3e3;
-    border-color: #ff8787;
-}
-
-.dummy-icon-custodia {
-    background-color: #e3fafc;
-    border-color: #66d9e8;
-}
-
-.dummy-icon-pension {
-    background-color: #ebfbee;
-    border-color: #8ce99a;
-}
-
-.dummy-icon-despido {
-    background-color: #fff5f5;
-    border-color: #ffc9c9;
-}
-
-.dummy-icon-contratos {
-    background-color: #fff4e6;
-    border-color: #ffd8a8;
-}
-
-.dummy-icon-pensiones-imss {
-    background-color: #f4f2ff;
-    border-color: #b197fc;
-}
-
-/* ======================================================= */
 /* ============  RESPONSIVIDAD MÓVIL / TABLET  ============ */
-/* ======================================================= */
 
 /* Tablets y pantallas medianas (≤ 992px) */
 @media (max-width: 992px) {
@@ -740,6 +689,268 @@ html, body {
     }
 
     .servicio-card {
-        padding: 1.5rem;
+        padding: 45px 1.2rem 1.5rem;
     }
+}
+
+
+/* ====================  SECCION 4: CONTACTO  ======================== */
+
+.contacto-section {
+    position: relative;
+    z-index: 10;
+    background-color: #0D131C;
+    padding: 80px 20px 60px;
+    text-align: center;
+}
+
+.contacto-titulo {
+    color: #d4af37;
+    font-size: 2.6rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 3.5rem;
+}
+
+/* Grid con las 2 tarjetas superiores */
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.contacto-card {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 10px;
+    padding: 3.2rem 1.5rem 1.8rem;
+    text-align: center;
+}
+
+.contacto-icon-circle {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background-color: #FFFDF5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+    .contacto-icon-circle i {
+        font-size: 1.6rem;
+        color: #0D131C;
+    }
+
+.contacto-texto {
+    color: #f4efeb;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Tarjeta inferior: lista de abogados */
+.contacto-abogados-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    text-align: left;
+}
+
+.abogado-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+    .abogado-item:last-child {
+        border-bottom: none;
+    }
+
+.abogado-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #FFFDF5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .abogado-avatar i {
+        font-size: 1.5rem;
+    }
+
+.abogado-avatar-mujer i {
+    color: #b06a2c;
+}
+
+.abogado-avatar-hombre i {
+    color: #0D4573;
+}
+
+.abogado-info {
+    color: #f4efeb;
+    font-size: 1.05rem;
+}
+
+    .abogado-info a {
+        color: #d4af37;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .abogado-info a:hover {
+            text-decoration: underline;
+        }
+
+.abogado-separator {
+    color: #d4af37;
+    margin: 0 0.5rem;
+}
+
+.abogado-tel-icon {
+    color: #d4af37;
+    font-size: 0.9rem;
+    margin-right: 0.3rem;
+}
+
+.bi-whatsapp.abogado-tel-icon {
+    color: #25D366;
+}
+
+.contacto-link {
+    color: #f4efeb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    .contacto-link:hover {
+        color: #d4af37;
+        text-decoration: underline;
+    }
+
+.contacto-mapa-hint {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    color: #d4af37;
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsivo Contacto --- */
+@media (max-width: 768px) {
+    .contacto-titulo {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contacto-abogados-card {
+        padding: 1rem 1.2rem;
+    }
+
+    .abogado-item {
+        flex-wrap: wrap;
+    }
+
+    .abogado-info {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-titulo {
+        font-size: 1.6rem;
+    }
+
+    .abogado-avatar {
+        width: 46px;
+        height: 46px;
+    }
+
+        .abogado-avatar i {
+            font-size: 1.2rem;
+        }
+}
+
+/*BOTÓN VOLVER ARRIBA*/
+
+.btn-scroll-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #0D4573;
+    border: 1px solid #d4af37;
+    color: #FFFDF5;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    /* Estado oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, visibility 0.3s ease;
+}
+
+    .btn-scroll-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .btn-scroll-top:hover {
+        background-color: #d4af37;
+        color: #0D131C;
+    }
+
+@media (max-width: 480px) {
+    .btn-scroll-top {
+        width: 42px;
+        height: 42px;
+        bottom: 18px;
+        right: 18px;
+        font-size: 1.05rem;
+    }
+}
+
+
+/* ==========  SECCIONES A TODO EL ANCHO (FULL-BLEED)  ==== */
+/* Estas secciones viven dentro del .container (max-width:1100px) del
+   _Layout.cshtml. Sin esto, en pantallas anchas se ve el fondo oscuro
+   del <body> como "bordes" a los lados. Este truco las hace expandirse
+   a todo el ancho del viewport sin tener que tocar el layout global. */
+.pantalla-principal,
+.NuestraMision,
+.contacto-section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
 }
